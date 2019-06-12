@@ -1,0 +1,33 @@
+<h1>Lista de pessoas com sono:</h1>
+
+<ul *ngFor="let person of people">
+    <li>{{person.name}} de {{person.age}} anos precisa dormir. Nível de sono: {{person.level}}</li>
+</ul>
+
+<h1>Lista de pessoas de 22 anos:</h1>
+<ul *ngFor="let person of people">
+    <div [ngIf]="person.age">
+        <li *ngIf="'22'">
+            {{person.age}} está com pouco sono.
+        </li>
+    </div>
+</ul>
+
+<h1>Lista de pessoas com pouco sono:</h1>
+<ul *ngFor="let person of people">
+    <div [ngSwitch]="person.level">
+        <li *ngSwitchCase="'P'">
+            {{person.name}} está com pouco sono.
+            
+        <li *ngSwitchCase="'M'">
+            {{person.name}} está com sono.
+
+        <li *ngSwitchCase="'G'">
+            {{person.name}} está com MUITO sono.
+
+        <li *ngSwitchDefault>
+            {{person.name}} está SEM sono.
+        </li>
+    </div>
+</ul>
+
